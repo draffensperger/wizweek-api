@@ -12,6 +12,8 @@ supports `GET` and `PUT` to retrieve and save the user's settings respectively.
 ## Developing locally
 
 To refresh the dependencies
+source venv/bin/activate
+
 ```
 virtualenv --clear venv
 pip install -r base-requirements.txt && pip freeze > requirements.txt
