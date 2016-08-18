@@ -9,20 +9,18 @@ It handles authentication by taking a user's Google account bearer token in the
 Currently the only endpoint that is supported is the `/settings` endpoint which
 supports `GET` and `PUT` to retrieve and save the user's settings respectively.
 
+## Setting environment variables
+
 ## Developing locally
 
-To refresh the dependencies
-source venv/bin/activate
-
+Here's how to refresh/update the dependencies (make sure you are using Python
+    3.5):
 ```
 virtualenv --clear venv
 pip install -r base-requirements.txt && pip freeze > requirements.txt
 ```
-pip install -r requirements.txt
 
-## Prerequisites
-
-
+source venv/bin/activate
 
 ## Deploying to Heroku
 
@@ -41,7 +39,5 @@ variable. If you're on a Mac, you could also do `cat YourProject-abcd1234.json |
 
 You also need a random secret key for the Flask app. Some string of random
 data will do just fine (e.g. generated via `openssl rand -base64 32`).
-
-## Deploying the AngularJS front-end
 
 
