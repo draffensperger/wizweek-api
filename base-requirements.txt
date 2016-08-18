@@ -6,4 +6,4 @@ gcloud
 gunicorn
 requests
 setuptools
-flask_sslify
+Flask-SSLify

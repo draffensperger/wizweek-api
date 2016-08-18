@@ -36,5 +36,5 @@ api.add_resource(Settings, '/settings')
 
 if __name__ == '__main__':
     app.secret_key = str(os.environ['FLASK_SECRET_KEY'])
-    app.debug = False
+    app.debug = bool(os.environ['FLASK_DEBUG'])
     app.run()
