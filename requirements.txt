@@ -4,6 +4,7 @@ click==6.6
 decorator==4.0.10
 Flask==0.11
 Flask-RESTful==0.3.5
+Flask-SSLify==0.1.5
 gcloud==0.18.1
 google-api-python-client==1.5.1
 googleapis-common-protos==1.2.0
