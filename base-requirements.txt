@@ -5,3 +5,4 @@ ipython
 gcloud
 gunicorn
 requests
+setuptools
