@@ -11,7 +11,7 @@ supports `GET` and `PUT` to retrieve and save the user's settings respectively.
 
 ## Developing locally
 
-pip install -r dev-requirements.txt && pip freeze > requirements.txt
+pip install -r base-requirements.txt && pip freeze > requirements.txt
 
 ## Prerequisites
 
