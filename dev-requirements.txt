@@ -3,3 +3,4 @@ flask_restful
 httplib2>=0.9.2
 ipython
 gcloud
+gunicorn

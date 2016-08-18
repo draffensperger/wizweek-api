@@ -1,17 +1,23 @@
-# WizWeek
+# WizWeek API
 
-Source code for a weekly planning application. This handles authenticating
-users with Google login, and an interface for settings and tasks.
+This is a simple Python Flask API for the weekly schedule optimizer website,
+[wizweek.com](https://wizweek.com).
 
-Currently it integrates with Google tasks, so you can see your WizWeek tasks there as
-well.
+It handles authentication by taking a user's Google account bearer token in the
+`Authorization` header. It will then verify that token against the Google API.
 
-This is an AngularJS application (and a bit of Python + Flask).
+Currently the only endpoint that is supported is the `/settings` endpoint which
+supports `GET` and `PUT` to retrieve and save the user's settings respectively.
 
-It makes use of the [scheduler] web service to do the actual schedule
-optimization.
+## Developing locally
 
-## Deploying the Flask (Python) backend
+pip install -r dev-requirements.txt && pip freeze > requirements.txt
+
+## Prerequisites
+
+
+
+## Deploying to Heroku
 
 Create a Google Cloud Platform project and authorize it to use the Google
 Cloud Datastore service. Then download a .json credentials file.
