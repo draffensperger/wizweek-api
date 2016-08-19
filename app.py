@@ -36,6 +36,11 @@ class Settings(Resource):
 
 api.add_resource(Settings, '/settings')
 
+# Allow a simple root URL for pinging the service.
+@app.route('/')
+def root():
+    return 'OK'
+
 if __name__ == '__main__':
     app.secret_key = str(os.environ['FLASK_SECRET_KEY'])
     app.debug = os.environ['FLASK_DEBUG'].lower() == 'true'
