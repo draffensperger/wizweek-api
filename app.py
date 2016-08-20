@@ -20,7 +20,9 @@ class Settings(Resource):
     def get(self, user_email):
         user = db.get(db.key('User', user_email))
         if user is None:
-            abort(404)
+            # If the user has no settings, return an empty object. The client
+            # will fill it in with appropriate default values.
+            return jsonify({})
         return jsonify(json.loads(user['settings']))
 
     @google_authorized
