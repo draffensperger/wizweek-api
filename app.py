@@ -12,7 +12,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 api = Api(app) 
 SSLify(app)
-CORS(app)
+CORS(app, origins=os.environ['CORS_ORIGINS'].split(','))
 db = datastore_client_from_env()
 
 class Settings(Resource):
