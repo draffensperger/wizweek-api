@@ -36,7 +36,55 @@ class Settings(Resource):
         db.put(user)
         return jsonify({ 'success': True })
 
+def include_id(entity):
+    item = entity.copy()
+    item['id'] = entity.key.id
+    return item
+
+class Tasks(Resource):
+    @google_authorized
+    def get(self, user_email):
+        ancestor = db.key('User', user_email)
+        query = db.query(kind='Task', ancestor=ancestor)
+        # Include the entity ids in the results
+        return jsonify(list(map(include_id, query.fetch())))
+
+    @google_authorized
+    def post(self, user_email):
+        if not request.json:
+            abort(400)
+        key = db.key('User', user_email, 'Task')
+        task = datastore.Entity(key)
+        request_data = request.json.copy()
+        # Disallow posting an id value
+        request_data.pop('id', None)
+        task.update(request_data)
+        db.put(task)
+        return jsonify({ 'success': True })
+
+class Task(Resource):
+    @google_authorized
+    def delete(self, user_email, task_id):
+        key = db.key('User', user_email, 'Task', int(task_id))
+        db.delete(key)
+        return jsonify({ 'success': True })
+
+    @google_authorized
+    def put(self, user_email, task_id):
+        if not request.json:
+            abort(400)
+        key = db.key('User', user_email, 'Task', int(task_id))
+        task = datastore.Entity(key)
+        request_data = request.json.copy()
+        # Disallow posting an id value
+        request_data.pop('id', None)
+        task.update(request_data)
+        db.put(task)
+        return jsonify({ 'success': True })
+
 api.add_resource(Settings, '/settings')
+api.add_resource(Tasks, '/tasks')
+api.add_resource(Task, '/tasks/<string:task_id>')
 
 # Allow a simple root URL for pinging the service.
 @app.route('/')
