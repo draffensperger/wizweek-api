@@ -60,7 +60,7 @@ class Tasks(Resource):
         request_data.pop('id', None)
         task.update(request_data)
         db.put(task)
-        return jsonify({ 'success': True })
+        return jsonify({ 'success': True, 'id': task.key.id })
 
 class Task(Resource):
     @google_authorized
